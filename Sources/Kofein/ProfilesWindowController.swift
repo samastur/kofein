@@ -25,4 +25,8 @@ final class ProfilesWindowController: NSObject, NSWindowDelegate {
         window.makeKeyAndOrderFront(nil)
         NSApp.activate()
     }
+
+    func close() {
+        window.close()
+    }
 }

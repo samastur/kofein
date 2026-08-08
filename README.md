@@ -27,6 +27,7 @@ appears in the menu bar; there is no Dock icon.
   A full, steaming cup means caffeinate is running; an empty cup means your
   Mac is free to sleep.
 - **Right-click** the icon to open the menu:
+  - The first line shows the current status (active or inactive).
   - **Profiles** — pick which profile the left-click toggle uses. If
     caffeinate is already running, it restarts with the chosen profile.
   - **Manage Profiles…** — create, edit, delete profiles and choose the
@@ -34,6 +35,8 @@ appears in the menu bar; there is no Dock icon.
   - **Start at Login** — add or remove Kofein from your login items.
     (This works when Kofein runs from a proper `Kofein.app` bundle, e.g.
     from `/Applications`.)
+  - **Language** — keep the system language (default) or force a specific
+    one.
   - **Quit Kofein** — quits the app and stops caffeinate.
 
 ## Profiles
@@ -62,8 +65,10 @@ Profiles are stored in
 
 ## Languages
 
-Kofein speaks **English** and **Slovenian**. It follows the language set for
-your macOS account and falls back to English for languages it does not have.
+Kofein speaks **English** and **Slovenian**. By default it follows the
+language set for your macOS account (falling back to English for languages
+it does not have); the right-click menu's **Language** submenu can override
+this with a specific language.
 
 ## Development
 

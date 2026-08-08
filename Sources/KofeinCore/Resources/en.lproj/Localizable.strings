@@ -2,9 +2,13 @@
 
 "profile.keepAwake.name" = "Keep Awake";
 
+"menu.status.active" = "Status: Active";
+"menu.status.inactive" = "Status: Inactive";
 "menu.profiles.header" = "Profiles";
 "menu.manageProfiles" = "Manage Profiles…";
 "menu.startAtLogin" = "Start at Login";
+"menu.language" = "Language";
+"menu.language.system" = "System Default";
 "menu.quit" = "Quit Kofein";
 
 "profiles.window.title" = "Kofein Profiles";

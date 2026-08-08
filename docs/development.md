@@ -68,6 +68,11 @@ is used.)
 
 macOS resolves the user's account language against the available `lproj`
 folders and falls back to English (`defaultLocalization` in `Package.swift`).
+The user can override the language in the menubar menu: the choice is stored
+in `UserDefaults` (`languageOverride`) and applied through
+`L10n.languageOverride`, which routes lookups to that language's `lproj`.
+`L10n.supportedLanguages` lists the shipped languages straight from the
+bundle, so a new language shows up in the Language submenu automatically.
 
 To add a language:
 

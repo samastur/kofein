@@ -2,9 +2,13 @@
 
 "profile.keepAwake.name" = "Ostani buden";
 
+"menu.status.active" = "Stanje: vklopljeno";
+"menu.status.inactive" = "Stanje: izklopljeno";
 "menu.profiles.header" = "Profili";
 "menu.manageProfiles" = "Upravljaj profile …";
 "menu.startAtLogin" = "Zaženi ob prijavi";
+"menu.language" = "Jezik";
+"menu.language.system" = "Sistemsko privzeto";
 "menu.quit" = "Končaj Kofein";
 
 "profiles.window.title" = "Kofein – profili";

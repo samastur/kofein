@@ -10,6 +10,7 @@ final class StatusItemController: NSObject {
     private let controller: CaffeinateController
     private let loginItems: LoginItemManaging
     private let showProfiles: () -> Void
+    private let setLanguage: (String?) -> Void
 
     /// The profile the left-click toggle uses. Starts as the stored default;
     /// the right-click menu can switch it for this session.
@@ -18,11 +19,13 @@ final class StatusItemController: NSObject {
     init(store: ProfileStore,
          controller: CaffeinateController,
          loginItems: LoginItemManaging,
-         showProfiles: @escaping () -> Void) {
+         showProfiles: @escaping () -> Void,
+         setLanguage: @escaping (String?) -> Void) {
         self.store = store
         self.controller = controller
         self.loginItems = loginItems
         self.showProfiles = showProfiles
+        self.setLanguage = setLanguage
         self.activeProfileID = store.defaultProfileID
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         super.init()
@@ -72,6 +75,12 @@ final class StatusItemController: NSObject {
     private func showMenu() {
         let menu = NSMenu()
 
+        let statusKey = controller.isActive ? "menu.status.active" : "menu.status.inactive"
+        let status = NSMenuItem(title: L10n.string(statusKey), action: nil, keyEquivalent: "")
+        status.isEnabled = false
+        menu.addItem(status)
+        menu.addItem(.separator())
+
         let header = NSMenuItem(title: L10n.string("menu.profiles.header"), action: nil, keyEquivalent: "")
         header.isEnabled = false
         menu.addItem(header)
@@ -100,6 +109,8 @@ final class StatusItemController: NSObject {
         loginItem.target = self
         loginItem.state = loginItems.isEnabled ? .on : .off
         menu.addItem(loginItem)
+
+        menu.addItem(languageMenuItem())
 
         menu.addItem(.separator())
 
@@ -131,6 +142,38 @@ final class StatusItemController: NSObject {
 
     @objc private func manageProfiles() {
         showProfiles()
+    }
+
+    /// "Language" submenu: System Default plus every shipped language,
+    /// labeled with its own name; checkmark on the current choice.
+    private func languageMenuItem() -> NSMenuItem {
+        let item = NSMenuItem(title: L10n.string("menu.language"), action: nil, keyEquivalent: "")
+        let submenu = NSMenu()
+
+        let system = NSMenuItem(title: L10n.string("menu.language.system"),
+                                action: #selector(selectLanguage(_:)),
+                                keyEquivalent: "")
+        system.target = self
+        system.state = L10n.languageOverride == nil ? .on : .off
+        submenu.addItem(system)
+        submenu.addItem(.separator())
+
+        for code in L10n.supportedLanguages {
+            let language = NSMenuItem(title: L10n.autonym(for: code),
+                                      action: #selector(selectLanguage(_:)),
+                                      keyEquivalent: "")
+            language.target = self
+            language.representedObject = code
+            language.state = L10n.languageOverride == code ? .on : .off
+            submenu.addItem(language)
+        }
+
+        item.submenu = submenu
+        return item
+    }
+
+    @objc private func selectLanguage(_ sender: NSMenuItem) {
+        setLanguage(sender.representedObject as? String)
     }
 
     @objc private func toggleLoginItem() {
