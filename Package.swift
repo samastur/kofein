@@ -10,6 +10,10 @@ let package = Package(
             name: "KofeinCore",
             resources: [.process("Resources")]
         ),
+        .executableTarget(
+            name: "Kofein",
+            dependencies: ["KofeinCore"]
+        ),
         .testTarget(
             name: "KofeinCoreTests",
             dependencies: ["KofeinCore"]
