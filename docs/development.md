@@ -30,6 +30,7 @@ Sources/
     ProfilesWindowController.swift    # NSWindow hosting ProfilesView
     SMAppServiceLoginItemManager.swift# SMAppService.mainApp wrapper
 Tests/KofeinCoreTests/               # Swift Testing suites
+Assets/app-icon.png                  # app icon source (bundle.sh renders AppIcon.icns from it)
 scripts/bundle.sh                    # assembles dist/Kofein.app
 ```
 
