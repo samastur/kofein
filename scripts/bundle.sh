@@ -13,7 +13,7 @@ rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 
 cp "$BUILD_DIR/Kofein" "$APP/Contents/MacOS/Kofein"
-cp -R "$BUILD_DIR/Kofein_KofeinCore.bundle" "$APP/Contents/Resources/"
+cp -R "$BUILD_DIR"/Kofein_*.bundle "$APP/Contents/Resources/"
 
 # App icon: build AppIcon.icns from the source PNG.
 ICONSET="$(mktemp -d)/AppIcon.iconset"

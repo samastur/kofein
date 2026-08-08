@@ -29,6 +29,7 @@ Sources/
     ProfilesView.swift                # SwiftUI profile manager + editor
     ProfilesWindowController.swift    # NSWindow hosting ProfilesView
     SMAppServiceLoginItemManager.swift# SMAppService.mainApp wrapper
+    Resources/                        # menubar icons (from domzilla/Caffeine, MIT)
 Tests/KofeinCoreTests/               # Swift Testing suites
 Assets/app-icon.png                  # app icon source (bundle.sh renders AppIcon.icns from it)
 scripts/bundle.sh                    # assembles dist/Kofein.app

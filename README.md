@@ -24,8 +24,8 @@ appears in the menu bar; there is no Dock icon.
 ## Usage
 
 - **Left-click** the cup icon to toggle keeping the Mac awake on or off.
-  A filled cup means caffeinate is running; an outlined cup means your Mac
-  is free to sleep.
+  A full, steaming cup means caffeinate is running; an empty cup means your
+  Mac is free to sleep.
 - **Right-click** the icon to open the menu:
   - **Profiles** — pick which profile the left-click toggle uses. If
     caffeinate is already running, it restarts with the chosen profile.
@@ -71,4 +71,6 @@ See [docs/development.md](docs/development.md).
 
 ## License
 
-See [LICENSE](LICENSE).
+See [LICENSE](LICENSE). The menubar icons come from
+[Caffeine](https://github.com/domzilla/Caffeine) (MIT); see
+[THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md).

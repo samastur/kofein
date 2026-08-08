@@ -44,8 +44,11 @@ final class StatusItemController: NSObject {
     }
 
     private func updateIcon() {
-        let symbol = controller.isActive ? "cup.and.saucer.fill" : "cup.and.saucer"
-        let image = NSImage(systemSymbolName: symbol, accessibilityDescription: "Kofein")
+        // Menubar cups from Caffeine (github.com/domzilla/Caffeine, MIT —
+        // see THIRD-PARTY-LICENSES.md): full steaming cup when active,
+        // empty cup when inactive.
+        let name = controller.isActive ? "active" : "inactive"
+        let image = Bundle.module.image(forResource: name)
         image?.isTemplate = true
         statusItem.button?.image = image
     }
