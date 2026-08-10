@@ -129,10 +129,6 @@ private struct ProfileEditor: View {
                 optionToggle("option.userActive", $profile.options.declareUserActive)
             }
             Section {
-                labeled("option.timeout") {
-                    TextField("", value: $profile.options.timeoutSeconds, format: .number)
-                        .frame(width: 120)
-                }
                 labeled("option.pid") {
                     TextField("", value: $profile.options.waitForPID, format: .number)
                         .frame(width: 120)

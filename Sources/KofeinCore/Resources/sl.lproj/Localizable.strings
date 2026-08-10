@@ -9,6 +9,11 @@
 "menu.startAtLogin" = "Zaženi ob prijavi";
 "menu.language" = "Jezik";
 "menu.language.system" = "Sistemsko privzeto";
+"menu.timeout" = "Časovna omejitev";
+"menu.timeout.indefinite" = "Brez omejitve";
+"menu.timeout.custom" = "Po meri …";
+"menu.timeout.customFormat" = "Po meri (%@) …";
+"menu.timeout.incompatible" = "Izbrani profil ni združljiv s časovno omejitvijo.";
 "menu.quit" = "Končaj Kofein";
 
 "profiles.window.title" = "Kofein – profili";
@@ -29,8 +34,6 @@
 "option.systemAC.help" = "Prepreči spanje sistema, vendar le, ko je Mac priključen na napajanje (caffeinate -s).";
 "option.userActive.label" = "Označi uporabnika kot dejavnega";
 "option.userActive.help" = "Sistemu sporoči, da je uporabnik dejaven, in vklopi zaslon, če je izklopljen. Brez časovne omejitve to traja le 5 sekund (caffeinate -u).";
-"option.timeout.label" = "Časovna omejitev (sekunde)";
-"option.timeout.help" = "Po toliko sekundah se caffeinate samodejno izklopi. Pustite prazno, da ostane vklopljen, dokler ga ne izklopite (caffeinate -t). Če je nastavljen ukaz, se ta možnost ne upošteva.";
 "option.pid.label" = "Počakaj na proces (PID)";
 "option.pid.help" = "Zahteve veljajo, dokler se proces s tem PID ne konča (caffeinate -w). Če je nastavljen ukaz, se ta možnost ne upošteva.";
 "option.command.label" = "Zaženi ukaz";
@@ -40,3 +43,9 @@
 "alert.startFailed.message" = "Kofeinu ni uspelo zagnati /usr/bin/caffeinate.";
 "alert.saveFailed.title" = "Profilov ni bilo mogoče shraniti";
 "alert.loginItemFailed.title" = "Elementa ob prijavi ni bilo mogoče spremeniti";
+"alert.customTimeout.title" = "Časovna omejitev po meri";
+"alert.customTimeout.message" = "Ohrani Mac buden za:";
+"unit.minutes" = "Minute";
+"unit.hours" = "Ure";
+"common.ok" = "V redu";
+"common.cancel" = "Prekliči";

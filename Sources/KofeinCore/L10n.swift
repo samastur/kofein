@@ -28,6 +28,16 @@ public enum L10n {
         string(key, language: languageOverride)
     }
 
+    /// Locale matching the current language choice — for formatters that
+    /// should follow the in-app language override.
+    public static var locale: Locale {
+        locale(for: languageOverride)
+    }
+
+    public static func locale(for language: String?) -> Locale {
+        language.map(Locale.init(identifier:)) ?? .autoupdatingCurrent
+    }
+
     /// Looks the key up in the given language's table; with `nil` (or an
     /// unknown language) it defers to the system's language resolution,
     /// which falls back to English.
@@ -51,6 +61,11 @@ public enum L10n {
         "menu.startAtLogin",
         "menu.language",
         "menu.language.system",
+        "menu.timeout",
+        "menu.timeout.indefinite",
+        "menu.timeout.custom",
+        "menu.timeout.customFormat",
+        "menu.timeout.incompatible",
         "menu.quit",
         "profiles.window.title",
         "editor.name.label",
@@ -69,8 +84,6 @@ public enum L10n {
         "option.systemAC.help",
         "option.userActive.label",
         "option.userActive.help",
-        "option.timeout.label",
-        "option.timeout.help",
         "option.pid.label",
         "option.pid.help",
         "option.command.label",
@@ -79,5 +92,11 @@ public enum L10n {
         "alert.startFailed.message",
         "alert.saveFailed.title",
         "alert.loginItemFailed.title",
+        "alert.customTimeout.title",
+        "alert.customTimeout.message",
+        "unit.minutes",
+        "unit.hours",
+        "common.ok",
+        "common.cancel",
     ]
 }

@@ -27,8 +27,10 @@ public final class CaffeinateController {
         self.makeProcess = makeProcess
     }
 
-    /// Start caffeinate with the profile's options, replacing any running instance.
-    public func activate(_ profile: Profile) throws {
+    /// Start caffeinate with the profile's options, replacing any running
+    /// instance. `timeoutSeconds` bounds the run (`-t`); it is ignored for
+    /// profiles that do not support a timeout.
+    public func activate(_ profile: Profile, timeoutSeconds: Int? = nil) throws {
         stopCurrentProcess()
         let newProcess = makeProcess()
         newProcess.onTermination = { [weak self, weak newProcess] in
@@ -36,7 +38,7 @@ public final class CaffeinateController {
             self.process = nil
             self.setActive(false)
         }
-        try newProcess.start(arguments: profile.options.arguments)
+        try newProcess.start(arguments: profile.options.arguments(timeoutSeconds: timeoutSeconds))
         process = newProcess
         activeProfile = profile
         setActive(true)
@@ -48,11 +50,11 @@ public final class CaffeinateController {
         setActive(false)
     }
 
-    public func toggle(_ profile: Profile) throws {
+    public func toggle(_ profile: Profile, timeoutSeconds: Int? = nil) throws {
         if isActive {
             deactivate()
         } else {
-            try activate(profile)
+            try activate(profile, timeoutSeconds: timeoutSeconds)
         }
     }
 

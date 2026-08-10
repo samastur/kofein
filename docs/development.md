@@ -13,6 +13,7 @@ only. It has two targets:
 Sources/
   KofeinCore/
     CaffeinateOptions.swift    # option model + argv builder for caffeinate(8)
+    TimeoutOption.swift        # session-timeout presets + localized duration labels
     Profile.swift              # named option combination
     ProfileStore.swift         # @Observable persistent store (JSON), invariants
     CaffeinateController.swift # start/stop state machine over ProcessRunning
@@ -57,6 +58,13 @@ Notes:
 - `CaffeinateController` distinguishes stops it initiated from external
   process exits (e.g. `-t` timeout) by detaching the termination callback
   before terminating; external exits flip the state and notify the UI.
+- The timeout (`-t`) is session state, not part of a profile:
+  `CaffeinateOptions.arguments(timeoutSeconds:)` emits it only when
+  `supportsTimeout` (no `-w`, no utility command — those runs are bounded
+  by their process). `StatusItemController` holds the selected timeout and
+  passes it to `activate`/`toggle`. Preset durations and their localized
+  labels live in `TimeoutOption`; labels come from `DateComponentsFormatter`
+  (correct plural forms per language), not from the string catalog.
 
 ## Localization
 

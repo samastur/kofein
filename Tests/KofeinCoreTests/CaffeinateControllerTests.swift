@@ -48,12 +48,12 @@ private let profile = Profile(name: "Test", options: .keepAwake)
     let (controller, currentProcess) = makeController()
     try controller.activate(profile)
     let first = currentProcess()
-    let other = Profile(name: "Other", options: CaffeinateOptions(preventIdleSleep: true, timeoutSeconds: 60))
+    let other = Profile(name: "Other", options: CaffeinateOptions(preventIdleSleep: true, preventDiskSleep: true))
     try controller.activate(other)
     #expect(first?.terminated == true)
     #expect(controller.isActive)
     #expect(controller.activeProfile == other)
-    #expect(currentProcess()?.startedArguments == ["-i", "-t", "60"])
+    #expect(currentProcess()?.startedArguments == ["-i", "-m"])
 }
 
 @Test func externalTerminationDeactivatesAndNotifies() throws {
@@ -65,6 +65,25 @@ private let profile = Profile(name: "Test", options: .keepAwake)
     #expect(!controller.isActive)
     #expect(controller.activeProfile == nil)
     #expect(states == [true, false])
+}
+
+@Test func activateWithTimeoutPassesTArgument() throws {
+    let (controller, currentProcess) = makeController()
+    try controller.activate(profile, timeoutSeconds: 300)
+    #expect(currentProcess()?.startedArguments == ["-d", "-i", "-t", "300"])
+}
+
+@Test func toggleOnWithTimeoutPassesTArgument() throws {
+    let (controller, currentProcess) = makeController()
+    try controller.toggle(profile, timeoutSeconds: 60)
+    #expect(currentProcess()?.startedArguments == ["-d", "-i", "-t", "60"])
+}
+
+@Test func timeoutIsIgnoredForIncompatibleProfile() throws {
+    let (controller, currentProcess) = makeController()
+    let waiting = Profile(name: "Wait", options: CaffeinateOptions(waitForPID: 99))
+    try controller.activate(waiting, timeoutSeconds: 300)
+    #expect(currentProcess()?.startedArguments == ["-w", "99"])
 }
 
 @Test func deactivateDoesNotDoubleNotify() throws {

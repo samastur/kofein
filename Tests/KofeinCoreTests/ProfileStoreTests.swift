@@ -21,7 +21,7 @@ private func tempURL() -> URL {
     let url = tempURL()
     let store = ProfileStore(fileURL: url)
     let profile = Profile(name: "Coffee break",
-                          options: CaffeinateOptions(preventIdleSleep: true, timeoutSeconds: 900))
+                          options: CaffeinateOptions(preventIdleSleep: true, preventDiskSleep: true))
     try store.add(profile)
     try store.setDefault(id: profile.id)
     let reloaded = ProfileStore(fileURL: url)

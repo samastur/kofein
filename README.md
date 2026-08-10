@@ -30,6 +30,9 @@ appears in the menu bar; there is no Dock icon.
   - The first line shows the current status (active or inactive).
   - **Profiles** — pick which profile the left-click toggle uses. If
     caffeinate is already running, it restarts with the chosen profile.
+  - **Timeout** — how long the selected profile runs: indefinitely
+    (default), one of the presets (5, 10, 15, 30 minutes; 1, 2, 5 hours),
+    or a custom duration in minutes or hours. See "Timeout" below.
   - **Manage Profiles…** — create, edit, delete profiles and choose the
     default one.
   - **Start at Login** — add or remove Kofein from your login items.
@@ -56,12 +59,26 @@ Available options (each is explained in the app as well):
 | Prevent disk idle sleep | `-m` | Keeps the disk from idle sleeping. |
 | Prevent system sleep on AC power | `-s` | Prevents system sleep, but only while the Mac runs on AC power. |
 | Declare user is active | `-u` | Tells the system the user is active and turns the display on if it is off. Without a timeout this lasts only 5 seconds. |
-| Timeout (seconds) | `-t` | Turns caffeinate off automatically after the given number of seconds. Leave empty to keep it on until you turn it off. Ignored when a command is set. |
 | Wait for process (PID) | `-w` | Keeps the assertions until the process with the given PID exits. Ignored when a command is set. |
 | Run command | *utility* | Runs a shell command (via `/bin/sh -c`) and keeps the assertions while it is running. |
 
 Profiles are stored in
 `~/Library/Application Support/Kofein/profiles.json`.
+
+## Timeout
+
+A timeout (`caffeinate -t`) is not part of a profile — it is set in the
+right-click menu's **Timeout** submenu and bounds how long the currently
+selected profile runs. Choose *Indefinitely* (the default), a preset, or
+*Custom…* to enter a duration in minutes or hours. Changing the timeout
+while caffeinate is running restarts it with the new limit; when the time
+is up, caffeinate stops and the icon returns to the empty cup. The choice
+applies until you quit the app.
+
+Profiles that wait for a process (PID) or run a command are bounded by that
+process instead: a timeout must not cut them short and makes no sense
+beyond their lifetime. For such profiles the Timeout menu is disabled and a
+note explains why.
 
 ## Languages
 

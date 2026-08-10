@@ -9,6 +9,11 @@
 "menu.startAtLogin" = "Start at Login";
 "menu.language" = "Language";
 "menu.language.system" = "System Default";
+"menu.timeout" = "Timeout";
+"menu.timeout.indefinite" = "Indefinitely";
+"menu.timeout.custom" = "Custom…";
+"menu.timeout.customFormat" = "Custom (%@)…";
+"menu.timeout.incompatible" = "The selected profile is not compatible with a timeout.";
 "menu.quit" = "Quit Kofein";
 
 "profiles.window.title" = "Kofein Profiles";
@@ -29,8 +34,6 @@
 "option.systemAC.help" = "Prevents system sleep, but only while the Mac runs on AC power (caffeinate -s).";
 "option.userActive.label" = "Declare user is active";
 "option.userActive.help" = "Tells the system the user is active and turns the display on if it is off. Without a timeout this lasts only 5 seconds (caffeinate -u).";
-"option.timeout.label" = "Timeout (seconds)";
-"option.timeout.help" = "Turns caffeinate off automatically after this many seconds. Leave empty to keep it on until you turn it off (caffeinate -t). Ignored when a command is set.";
 "option.pid.label" = "Wait for process (PID)";
 "option.pid.help" = "Keeps the assertions until the process with this PID exits (caffeinate -w). Ignored when a command is set.";
 "option.command.label" = "Run command";
@@ -40,3 +43,9 @@
 "alert.startFailed.message" = "Kofein failed to launch /usr/bin/caffeinate.";
 "alert.saveFailed.title" = "Could not save profiles";
 "alert.loginItemFailed.title" = "Could not change the login item";
+"alert.customTimeout.title" = "Custom Timeout";
+"alert.customTimeout.message" = "Keep the Mac awake for:";
+"unit.minutes" = "Minutes";
+"unit.hours" = "Hours";
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
